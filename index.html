@@ -1,0 +1,36 @@
+<!-- <pre style="width: 100%; height: 100%; margin:0px; "></pre> -->
+
+<div id="resolution_holder" style="width: 1920px; height: 1080px; min-width: 1980px; min-height: 1080px;">
+<p id="balance_of_return" style="margin-left: 85%; margin-top: 25px; position: absolute;"> TMP </p>
+
+
+
+
+</div>
+<div id="main_holder" style="width: 100%; height: 100%; margin:0px;"></div>
+
+<script src='web3.min.js'></script>
+<script src='abi.js'></script>
+
+<script>
+
+  // Setting global variables
+  /* **************************************************** */
+
+var web3 = new Web3(Web3.givenProvider || "https://main-rpc.linkpool.io");
+var myBalance;
+
+var myContract = new web3.eth.Contract(abiArray, '0x2af5d2ad76741191d15dfe7bf6ac92d4bd912ca3');
+
+console.log(myContract);
+
+myContract.methods.balanceOf("0x01000b5fe61411c466b70631d7ff070187179bbf").call().then(function(receipt){
+    console.log("RESULT ", receipt);
+    myBalance = receipt;
+    document.getElementById("balance_of_return").innerHTML = myBalance;
+});
+
+//console.log("Balance: ", myBalance);
+
+</script>
+</div>
